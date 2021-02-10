@@ -93,6 +93,8 @@ def dot(s):
 def st(s):
     i=s.find('*')
     fi=s[:i]
+    if(fi not in dic):
+        cr(fi)
     l=dic[fi][0]
     cre(l[1],l[0])
     cre(k, l[0])
