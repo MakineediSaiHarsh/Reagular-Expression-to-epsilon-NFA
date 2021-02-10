@@ -1,3 +1,11 @@
+'''
+Give proper brackets
+example: ((a|b)*) , (((a.b).c)|a)
+I have used 'e' to represent epsilon
+and don't use variable names starting from 't'
+since i have used it to store temporary states
+'''
+
 re = input()
 reoo=re
 tk=1
@@ -105,9 +113,12 @@ while(s!='end'):
 
     elif(s.find('*')!=-1):
         st(s)
-    print(s)
+    
     s=get()
+print("Transition symbol : [transition_from_state , Transition_to_state]")
 print(dic)
+print()
+print("Transition Table")
 
 l=[]
 for i in range(0,k):
