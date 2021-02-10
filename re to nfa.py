@@ -8,8 +8,10 @@ since i have used it to store temporary states
 
 re = input()
 reoo=re
-tk=1
-k=0
+tk=1   #count of temporary state
+k=0    #the new state to be created next
+
+#to get the part of the input which is supposed to be evaluated next
 def get():
     global re,tk
     r=re
@@ -24,8 +26,9 @@ def get():
     tk=tk+1
     return s
 
-dic={}
+dic={}   #to store for each transition symbol the set of states between which it is the transition symbol
 
+#to create two new states whith transition from first to second on symbol s 
 def cr(s):
     global k
     if(s in dic):
@@ -35,6 +38,7 @@ def cr(s):
     k=k+2
     return [k-2,k-1]
 
+#to create an epsilon transition between states c and n 
 def cre(c,n):
     if('e'in dic):
         x=[c,n]
@@ -42,10 +46,12 @@ def cre(c,n):
     else:
         dic['e']=[[c,n]]
 
+#to create a temporary symbol transition between states a and b
 def crt(a,b):
     x = 't' + str(tk - 1)
     dic[x]=[[a,b]]
 
+#to perform or(|) operation
 def orr(s):
     global k
     i=s.index('|')
@@ -73,6 +79,7 @@ def orr(s):
     x = 't' + str(tk - 1)
     cr(x)
 
+#to perform dot(.) operation
 def dot(s):
     global k
     i=s.find('.')
@@ -90,6 +97,7 @@ def dot(s):
         cre(l[1],l1[0])
     crt(l[0],l1[1])
 
+#to perform clouser(*) operation
 def st(s):
     i=s.find('*')
     fi=s[:i]
@@ -104,7 +112,7 @@ def st(s):
     cr(x)
 
 
-
+#to evaluate the experssion part by part
 s=get()
 while(s!='end'):
     if(s.find('|')!=-1):
@@ -117,11 +125,13 @@ while(s!='end'):
         st(s)
     
     s=get()
+
 print("Transition symbol : [transition_from_state , Transition_to_state]")
 print(dic)
 print()
 print("Transition Table")
 
+#creating and printing transition table
 l=[]
 for i in range(0,k):
     a=[]
