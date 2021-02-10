@@ -3,12 +3,12 @@ Give proper brackets
 example: ((a|b)*) , (((a.b).c)|a)
 I have used 'e' to represent epsilon
 and don't use variable names starting from 't'
-since i have used it to store temporary states
+since i have used it for temporary symbols
 '''
 
 re = input()
 reoo=re
-tk=1   #count of temporary state
+tk=1   #count of temporary sybol
 k=0    #the new state to be created next
 
 #to get the part of the input which is supposed to be evaluated next
