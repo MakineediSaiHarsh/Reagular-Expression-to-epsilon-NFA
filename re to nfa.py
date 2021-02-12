@@ -101,8 +101,10 @@ def dot(s):
 def st(s):
     i=s.find('*')
     fi=s[:i]
-    if(fi not in dic):
-        cr(fi)
+    if(fi[0]=='t'):
+        l=dic[fi][0]
+    else:
+        l=cr(fi)
     l=dic[fi][0]
     cre(l[1],l[0])
     cre(k, l[0])
@@ -128,6 +130,13 @@ while(s!='end'):
 
 print("Transition symbol : [transition_from_state , Transition_to_state]")
 print(dic)
+print()
+
+print("Start state: ",end="")
+x = 't' + str(tk-1)
+print(dic[x][0][0])
+print("Final state: ",end="")
+print(dic[x][0][1])
 print()
 print("Transition Table")
 
